@@ -22,6 +22,7 @@ Anusha: I dont think its required for the exercise. After we're done with it per
 Anusha: Honestly I'm rather confused here. A couple of points to address;
   - When creating a die how do we assign it alphabets? Do we randomly choose 6 numbers from 1 to 26?
   - how many different types dice would be there? Would they be assigned to board positions randomly?
+  
 About the board;
   - Do we have to differentiate between a board creation and a board shuffle?
     => Like I guess the different types of die would remain the same during a shuffle but not on different board creations. 
@@ -43,11 +44,11 @@ Anusha: I've no idea
 ### Possible components
 
 - Dictionary resource into trie
-..- Parse dictionary
-..- Add words to Trie
+  * Parse dictionary
+  * Add words to Trie
 - Generate board
-..- Create die
-..- Populate board
+  * Create die
+  * Populate board
 - Given board, find all valid words
 - Calculate points
 
