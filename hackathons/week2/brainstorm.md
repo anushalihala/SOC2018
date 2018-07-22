@@ -53,5 +53,6 @@ Anusha: I've no idea
 - Calculate points
 
 #### References
+
 [1]: https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014
 [2]: https://github.com/1millionwomentotech/toolkitten/blob/master/summer-of-code/week-02/wk2-hackathon-submissions/hackathon-challenge-boggle-solver.md
