@@ -41,7 +41,7 @@ get all the neighbours that aren't part of the word yet
   
 Anusha: I've no idea
 
-### Possible components
+#### Possible components
 
 - Dictionary resource into trie
   * Parse dictionary
