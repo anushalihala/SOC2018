@@ -45,7 +45,7 @@ get all the neighbours that aren't part of the word yet
   - What does this question mean?
   
   Lisa: depending on how long the word is, it's worth a certain amount of points.
-For words of 4 or fewer letters, 1 point is awarded. 5-letter words are worth 2 points, 6-letter words are worth 3 points, 7-letter words are worth 5 points, and words longer than 7 letters are worth 11 points.
+1 and 2 letter words = 0 points 3 letter words = 1 point 4 letter words = 2 points 5 letter words = 3 points
 
 Anusha: I've no idea
 
