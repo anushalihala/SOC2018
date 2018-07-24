@@ -43,6 +43,7 @@ get all the neighbours that aren't part of the word yet
 
 4. **[What is the MOST number of points possible in boggle?][2]**
   - What does this question mean?
+  
   Lisa: depending on how long the word is, it's worth a certain amount of points.
 For words of 4 or fewer letters, 1 point is awarded. 5-letter words are worth 2 points, 6-letter words are worth 3 points, 7-letter words are worth 5 points, and words longer than 7 letters are worth 11 points.
 
