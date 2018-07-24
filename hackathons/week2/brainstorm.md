@@ -16,6 +16,8 @@ Anusha: Implementing it on our own might be more thorough and fun :) If we get s
 
 Anusha: I dont think its required for the exercise. After we're done with it perhaps we could extend it with the service (like beyond this week)
 
+Lisa: Make our own dictionary?
+
 2. **Dice distribution?**
   - randomly generated? Any ideas on how to do this efficiently enough, and still generate evenly distributed 16 letters?
 
@@ -27,6 +29,9 @@ About the board;
   - Do we have to differentiate between a board creation and a board shuffle?
     => Like I guess the different types of die would remain the same during a shuffle but not on different board creations. 
     Also for a shuffle do the dices change position on the board? (I dont know much about Boggle haha)
+    
+LISA: I FOUND THIS for THE DICE LETTERS. 
+https://boardgames.stackexchange.com/questions/29264/boggle-what-is-the-dice-configuration-for-boggle-in-various-languages
 
 3. **Main algorithm: given 16 letters, how do we find all possible words on a given board?**
   - Do we try out all possible combinations and check them against the dictionary? This implies all possible combinations of length 2, of length 3, of length 4... of length 16.
@@ -38,7 +43,9 @@ get all the neighbours that aren't part of the word yet
 
 4. **[What is the MOST number of points possible in boggle?][2]**
   - What does this question mean?
-  
+  Lisa: depending on how long the word is, it's worth a certain amount of points.
+For words of 4 or fewer letters, 1 point is awarded. 5-letter words are worth 2 points, 6-letter words are worth 3 points, 7-letter words are worth 5 points, and words longer than 7 letters are worth 11 points.
+
 Anusha: I've no idea
 
 #### Possible components
