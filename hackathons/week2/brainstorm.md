@@ -45,7 +45,9 @@ get all the neighbours that aren't part of the word yet
   - What does this question mean?
   
   Lisa: depending on how long the word is, it's worth a certain amount of points.
+  
 1 and 2 letter words = 0 points 3 letter words = 1 point 4 letter words = 2 points 5 letter words = 3 points
+The longest possible word 16 letter word = 14 points
 
 Anusha: I've no idea
 
@@ -59,6 +61,7 @@ Anusha: I've no idea
   * Populate board
 - Given board, find all valid words
 - Calculate points
+-timer (3 min)
 
 #### References
 
