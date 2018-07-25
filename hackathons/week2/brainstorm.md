@@ -18,6 +18,8 @@ Anusha: I dont think its required for the exercise. After we're done with it per
 
 Lisa: Make our own dictionary?
 
+*Dictionary to be used - https://raw.githubusercontent.com/jonbcard/scrabble-bot/master/src/dictionary.txt* 
+
 2. **Dice distribution?**
   - randomly generated? Any ideas on how to do this efficiently enough, and still generate evenly distributed 16 letters?
 
@@ -32,6 +34,8 @@ About the board;
     
 LISA: I FOUND THIS for THE DICE LETTERS. 
 https://boardgames.stackexchange.com/questions/29264/boggle-what-is-the-dice-configuration-for-boggle-in-various-languages
+
+*Dice Distribution - Use the New Version: https://www.boardgamegeek.com/thread/300565/review-boggle-veteran-and-beware-different-version*
 
 3. **Main algorithm: given 16 letters, how do we find all possible words on a given board?**
   - Do we try out all possible combinations and check them against the dictionary? This implies all possible combinations of length 2, of length 3, of length 4... of length 16.
@@ -62,6 +66,18 @@ Anusha: I've no idea
 - Given board, find all valid words
 - Calculate points
 -timer (3 min)
+
+#### Submission guidlines
+Your code should return an object in the following format:
+
+```
+result = {
+    "score": 143,
+    "words": [ "" , "", "", "", ... , ""]
+}
+```
+
+Where there are two key-value pairs. The first pair has key = "score", and the value should be an integer. The second par has key = "words", and the value should be an alphabetically SORTED list of words.
 
 #### References
 
