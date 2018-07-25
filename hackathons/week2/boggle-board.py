@@ -98,6 +98,19 @@ def get_neighbours(idx,n):
     return neighbours
     
 def find_next_words(current_index,current_word,board,tiles_in_word):
+    """
+    Finds a list of all valid words in given board for which current_word is a prefix
+    
+    Arguments:
+    current_index -- index of last character in current_word
+    current_word -- word consisting of all tiles traversed so far
+    board -- 2d list representing square boggle board
+    tiles_in_word -- stores the indices of the tiles that make up current_word. 
+                     uses a dictionary to store both the list representation (accessible by 'stack') and set representation (accessible by 'set')
+    
+    Returns:
+    words -- list of valid words for which current_word is a prefix
+    """
     n=len(board)
     words=[]
     for n in get_neighbours(current_index,n):
