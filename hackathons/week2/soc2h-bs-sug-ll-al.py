@@ -334,10 +334,16 @@ def find_words(board, dictionary):
     return words
 
 
-#STUB
-def calc_score(word_list):
-    return 100
-    
+def calculate_score(word_list):
+    count = 0
+    for x in word_list:
+        x_length = len(x.strip())
+        if(x_length < 3):
+            continue
+        else:
+            count = count + (x_length - 2)
+    return count
+
     
 def benchmarking(dictionary):
     """
@@ -376,13 +382,13 @@ def main():
     for word in word_list:
         print(word)
     
-    #benchmarking
+    # benchmarking
     print('\nAverage time taken to find words in standard 4x4 boggle board =')
     print(benchmarking(dictionary),'seconds')
     
     #Create result object
     result=dict()
-    result['score']= calc_score(word_list)
+    result['score']= calculate_score(word_list)
     result['words']=sorted(word_list)
     
     print('\nResult object:')
