@@ -3,7 +3,7 @@
 #TEAM MEMBERS
 #Anusha Lihala; https://github.com/anushalihala
 #Lisa Liu; https://github.com/lisaisfabu
-#Solange; https://github.com/SolangeUG
+#Solange Umuhire Gasengayire; https://github.com/SolangeUG
 
 import random
 import time
