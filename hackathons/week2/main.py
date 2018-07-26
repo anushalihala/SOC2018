@@ -3,43 +3,8 @@
 import time
 from dictionary import Dictionary
 from score import calculate_score
-from board import get_board
-    
-def get_neighbours(idx,n):
-    """
-    Finds indices of neighbours of current index (including diagonals)
-    
-    Arguments:
-    idx -- current index as 2-tuple representing row and column
-    n -- dimension of corresponding square board
-    
-    Returns:
-    neighbours -- list of indices of neighbouring tiles on board
-    """
-    neighbours=[]
-    row=idx[0]
-    col=idx[1]
-    
-    adj_rows=[idx[0]]
-    adj_cols=[idx[1]]
-    
-    n_range = set(range(n))
-    
-    if((row-1) in n_range):
-        adj_rows.append(row-1)
-    if((row+1) in n_range):
-        adj_rows.append(row+1)
-    if((col-1) in n_range):
-        adj_cols.append(col-1)
-    if((col+1) in n_range):
-        adj_cols.append(col+1)
-        
-    for i in adj_rows:
-        for j in adj_cols:
-            neighbours.append((i,j))
-    
-    neighbours.remove(idx)
-    return neighbours
+from board import get_board, get_neighbours
+
     
 def find_next_words(current_index, current_word, tiles_in_word, board, dictionary):
     """
