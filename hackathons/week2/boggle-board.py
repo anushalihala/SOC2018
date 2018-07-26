@@ -1,5 +1,6 @@
 import random
 import pdb
+from dictionary import Dictionary
 
 def get_board(n=-1, distribution=None):
     """
@@ -53,13 +54,13 @@ def get_board(n=-1, distribution=None):
     return board
         
 #STUB
-def is_word(word):
-    s = set(['MAD','HAD','HAM'])
-    return word in s
-#STUB
-def is_path(word):
-    s = set(['MAD','HAD','HAM','M','H','MA','HA'])
-    return word in s
+# def is_word(word):
+    # s = set(['MAD','HAD','HAM'])
+    # return word in s
+# STUB
+# def is_path(word):
+    # s = set(['MAD','HAD','HAM','M','H','MA','HA'])
+    # return word in s
     
 def get_neighbours(idx,n):
     """
@@ -97,17 +98,18 @@ def get_neighbours(idx,n):
     neighbours.remove(idx)
     return neighbours
     
-def find_next_words(current_index,current_word,board,tiles_in_word):
+def find_next_words(current_index, current_word, tiles_in_word, board, dictionary):
     """
     Finds a list of all valid words in given board for which current_word is a prefix
     
     Arguments:
     current_index -- index of last character in current_word
     current_word -- word consisting of all tiles traversed so far
-    board -- 2d list representing square boggle board
     tiles_in_word -- stores the indices of the tiles that make up current_word. 
                      uses a dictionary to store both the list representation (accessible by 'stack') and set representation (accessible by 'set')
-    
+    board -- 2d list representing square boggle board   
+    dictionary -- object of Dictionary class; API for methods iS_path and is_word
+
     Returns:
     words -- list of valid words for which current_word is a prefix
     """
@@ -119,25 +121,26 @@ def find_next_words(current_index,current_word,board,tiles_in_word):
     
         current_ch=board[n[0]][n[1]]
         word = current_word + current_ch
-        if(is_word(word)):
+        if(dictionary.is_word(word)):
             words.append(word)
             
-        if(is_path(word)): 
+        if(dictionary.is_path(word)): 
             tiles_in_word['stack'].append(n)
             tiles_in_word['set'].add(n)
-            words += find_next_words(n,word,board,tiles_in_word)
+            words += find_next_words(n, word, tiles_in_word, board, dictionary)
             
             idx = tiles_in_word['stack'].pop()
             tiles_in_word['set'].remove(idx)
             
     return words
 
-def find_words(board):
+def find_words(board, dictionary):
     """
     Finds a list of all valid words in given board
     
     Arguments:
     board -- 2d list representing square boggle board
+    dictionary -- object of Dictionary class; API for methods iS_path and is_word
     
     Returns:
     words -- list of valid words
@@ -156,8 +159,8 @@ def find_words(board):
         tiles_in_word['stack']=[index]
         tiles_in_word['set']={index}
 
-        if(is_path(word)):
-            words += find_next_words(index,word,board,tiles_in_word)
+        if(dictionary.is_path(word)):
+            words += find_next_words(index, word, tiles_in_word, board, dictionary)
             
     return words
 
@@ -168,11 +171,16 @@ def find_words(board):
     
 #TESTING WORD SEARCH
 # t = {'stack':[(0,0)],'set':{(0,0)}}
-# ans = find_next_words((0,0),'M',[['M','A'],['H','D']],t)
+# ans = find_next_words((0,0), 'M', t, [['M','A'],['H','D']], dictionary)
 
-# ans=find_words([['M','A'],['H','D']])    
-# for w in ans:
-    # print(w)
+filename = 'boggle-dictionary.txt'
+dictionary = Dictionary(filename)
+b=get_board()
+for r in b:
+    print(r)
+ans=find_words(b,dictionary)    
+for w in ans:
+    print(w)
     
 # print(get_neighbours((0,0),4))
 # print(get_neighbours((0,3),4))
