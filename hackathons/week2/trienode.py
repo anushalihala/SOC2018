@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 class TrieNode(object):
     """
     This class represents a node in a trie
