@@ -1,66 +1,9 @@
-import random
-import pdb
+#!/usr/bin/env python3
+
+import time
 from dictionary import Dictionary
-
-def get_board(n=-1, distribution=None):
-    """
-    Generates a boggle board; 
-    no arguments - with dimensions of 4x4, based on dice distribution of new boggle version
-    arguments given - with dimensions of nxn, based on distribution obtained from with replacement sampling of list
-    
-    Arguments:
-    n (optional) -- dimensions of board 
-    distribution (optional) -- list of characters to be sampled from
-    
-    Returns:
-    board -- 2d list of size n x n containing characters (where n=4 by default)
-    """
-    if(n==-1):
-        die =  {0:'AAEEGN',
-                1:"ELRTTY",
-                2:"AOOTTW",
-                3:"ABBJOO",
-                4:"EHRTVW",
-                5:"CIMOTU",
-                6:"DISTTY",
-                7:"EIOSST",
-                8:"DELRVY",
-                9:"ACHOPS",
-                10:"HIMNQU",
-                11:"EEINSU",
-                12:"EEGHNW",
-                13:"AFFKPS",
-                14:"HLNNRZ",
-                15:"DEILRX"}
-        
-        #initialise board
-        board = [ ["" for j in range(4)] for i in range(4)]
-        
-        for i in range(16):
-            row_no = i//4 #integer division
-            col_no = i%4 
-            dice_throw =  random.randint(0,5)
-            board[row_no][col_no] = die[i][dice_throw]
-    else:
-        #initialise board
-        board = [ ["" for j in range(n)] for i in range(n)]
-        
-        for i in range(n*n):
-            row_no = i//n #integer division
-            col_no = i%n 
-            dice_throw =  random.randint(0,len(distribution)-1)
-            board[row_no][col_no] = distribution[dice_throw]
-
-    return board
-        
-#STUB
-# def is_word(word):
-    # s = set(['MAD','HAD','HAM'])
-    # return word in s
-# STUB
-# def is_path(word):
-    # s = set(['MAD','HAD','HAM','M','H','MA','HA'])
-    # return word in s
+from score import calculate_score
+from board import get_board
     
 def get_neighbours(idx,n):
     """
@@ -108,7 +51,7 @@ def find_next_words(current_index, current_word, tiles_in_word, board, dictionar
     tiles_in_word -- stores the indices of the tiles that make up current_word. 
                      uses a dictionary to store both the list representation (accessible by 'stack') and set representation (accessible by 'set')
     board -- 2d list representing square boggle board   
-    dictionary -- object of Dictionary class; API for methods iS_path and is_word
+    dictionary -- object of Dictionary class; API for methods is_path and is_word
 
     Returns:
     words -- list of valid words for which current_word is a prefix
@@ -140,7 +83,7 @@ def find_words(board, dictionary):
     
     Arguments:
     board -- 2d list representing square boggle board
-    dictionary -- object of Dictionary class; API for methods iS_path and is_word
+    dictionary -- object of Dictionary class; API for methods is_path and is_word
     
     Returns:
     words -- list of valid words
@@ -165,24 +108,56 @@ def find_words(board, dictionary):
     return words
 
     
-#TESTING BOARD GENERATION    
-# print(get_board(3,["a","e","i","o","u","b","c","d"]))
-# print(get_board())
+def benchmarking(dictionary):
+    """
+    Find average time taken to find all valid (given by dictionary) in a standard boggle board of size 4x4
     
-#TESTING WORD SEARCH
-# t = {'stack':[(0,0)],'set':{(0,0)}}
-# ans = find_next_words((0,0), 'M', t, [['M','A'],['H','D']], dictionary)
+    Arguments:
+    dictionary -- object of Dictionary class; API for methods is_path and is_word
+    """
+    sum=0
+    for i in range(100):
+        boggle_board = get_board()
+        
+        time_before=time.time()
+        for j in range(10):
+            find_words(boggle_board,dictionary)
+        time_after=time.time()
+        time_diff=time_after - time_before
+        
+        sum=sum+(time_diff/10)
+        
+    avg=sum/100
+    return avg
+   
+   
+def main():
+    filename = 'boggle-dictionary.txt'
+    dictionary = Dictionary(filename)
+    boggle_board = get_board()
+    
+    print("Boggle board after shuffle:")
+    for row in boggle_board:
+        print(row)
+    
+    print("\nWords found in board:")    
+    word_list = find_words(boggle_board,dictionary)    
+    for word in word_list:
+        print(word)
+    
+    #benchmarking
+    print('\nAverage time taken to find words in standard 4x4 boggle board =')
+    print(benchmarking(dictionary),'seconds')
+    
+    #Create result object
+    result=dict()
+    result['score']= calculate_score(word_list)
+    result['words']=sorted(word_list)
+    
+    print('\nResult object:')
+    print(result)
+    
+    return result
 
-filename = 'boggle-dictionary.txt'
-dictionary = Dictionary(filename)
-b=get_board()
-for r in b:
-    print(r)
-ans=find_words(b,dictionary)    
-for w in ans:
-    print(w)
-    
-# print(get_neighbours((0,0),4))
-# print(get_neighbours((0,3),4))
-# print(get_neighbours((3,0),4))
-# print(get_neighbours((3,3),4))
+if __name__ == '__main__':
+    main()
