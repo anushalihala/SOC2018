@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #TEAM MEMBERS
 #Anusha Lihala; https://github.com/anushalihala
 #Lisa Liu; https://github.com/lisaisfabu
