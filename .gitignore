@@ -1,0 +1,6 @@
+# PyCharm project files
+*.iml
+.idea/
+
+# Ignore Python 3 bytecode
+__pycache__/
