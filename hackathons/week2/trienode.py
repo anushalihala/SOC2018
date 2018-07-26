@@ -15,13 +15,6 @@ class TrieNode(object):
         self.__children = {}
         self.__ends_word = False
 
-    def get_text(self):
-        """
-        Return the text at this trie node
-        :return: text string stored at this node
-        """
-        return self.__text
-
     def get_ends_word(self):
         """
         Does this node end a word?
@@ -36,13 +29,6 @@ class TrieNode(object):
         :return: None
         """
         self.__ends_word = ends_word
-
-    def get_children(self):
-        """
-        Return a collection of this trie node's children
-        :return: this node's children
-        """
-        return self.__children
 
     def get_child(self, char: str):
         """
