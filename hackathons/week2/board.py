@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import random
 
 def get_board(n=-1, distribution=None):
