@@ -158,3 +158,36 @@ function benchmarking(n) {
     }
     return (sum / iterations);
 }
+
+/**
+ * Main function for testing the solution to the continent counter challenge.
+ */
+function main() {
+    console.log('Finding areas in a model 11x11 world');
+    console.log('World:\n');
+    var myWorld =
+        [[0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,1,0,0,0],
+        [0,0,0,0,0,0,1,0,0,0,0],
+        [0,0,0,1,0,0,1,0,0,0,0],
+        [0,0,0,1,1,1,1,0,0,0,0],
+        [0,0,0,1,1,1,1,1,0,0,1],
+        [0,0,1,1,1,0,0,0,0,0,1],
+        [0,0,0,0,0,0,0,1,1,1,1],
+        [1,1,0,0,0,0,0,1,1,1,0],
+        [1,1,0,0,0,0,0,0,1,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0]];
+    console.log(printWorld(myWorld));
+    console.log("Continents counter:", continentsCounter(myWorld, NaN));
+    console.log();
+
+    var size = parseInt(prompt('Enter size of new world'));
+    console.log('Finding areas in a random ' + size.toString() + 'x' + size.toString() + ' world.');
+    console.log('World:');
+    var randomWorld = randomWorldGenerator(size);
+    console.log(randomWorld);
+    console.log("Continents counter:", continentsCounter(randomWorld, NaN));
+    console.log();
+
+    console.log('Average time taken to find areas =', benchmarking(11), 'seconds');
+}
