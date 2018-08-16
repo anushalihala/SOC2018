@@ -60,19 +60,25 @@ function continentCounter(world, indices) {
 
         // calculate indices of neighbours
         if (x === 0) {
-            xValues.push([x, x + 1]);
+            xValues.push(x);
+            xValues.push(x + 1);
         } else if (x === n) {
-            xValues.push([x - 1, x]);
+            xValues.push(x - 1);
+            xValues.push(x);
         } else {
-            xValues.push([x - 1, x + 1]);
+            xValues.push(x - 1);
+            xValues.push(x + 1);
         }
 
         if (y === 0) {
-            yValues.push([y, y + 1]);
+            yValues.push(y);
+            yValues.push(y + 1);
         } else if (y === n) {
-            yValues.push([y - 1, y]);
+            yValues.push(y - 1);
+            yValues.push(y);
         } else {
-            yValues.push([y - 1, y + 1]);
+            yValues.push(y - 1);
+            yValues.push(y + 1);
         }
 
         for (var i = 0; i < xValues.length; i++) {
