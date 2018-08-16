@@ -24,7 +24,7 @@ function randomWorldGenerator(n) {
  * @return Array twoStr -- two element array; 2D array as a plain string (in tabular form) and html string
  */
 function printWorld(world) {
-    var htmlStr="<p>["
+    var htmlStr="<p>[";
     var worldStr = '[';
     var n = world.length;
     for (var i = 0; i < n; i++) {
@@ -33,10 +33,22 @@ function printWorld(world) {
         for (var j = 0; j < n; j++) {
             if (j !== n - 1) {
                 worldStr += world[i][j] + ',';
-                htmlStr += world[i][j] + ',';
+                if (world[i][j] === 0) {
+                    htmlStr += world[i][j] + ',';
+                } else {
+                    htmlStr += '<span style="color: red">';
+                    htmlStr += world[i][j];
+                    htmlStr += '</span>,';
+                }
             } else {
                 worldStr += world[i][j];
-                htmlStr += world[i][j];
+                if (world[i][j] === 0) {
+                    htmlStr += world[i][j] + ',';
+                } else {
+                    htmlStr += '<span style="color: red">';
+                    htmlStr += world[i][j];
+                    htmlStr += '</span>,';
+                }
             }
         }
         worldStr += ']';
@@ -90,6 +102,7 @@ function continentCounter(world, indices) {
             xValues.push(x);
         } else {
             xValues.push(x - 1);
+            xValues.push(x);
             xValues.push(x + 1);
         }
 
@@ -101,6 +114,7 @@ function continentCounter(world, indices) {
             yValues.push(y);
         } else {
             yValues.push(y - 1);
+            yValues.push(y);
             yValues.push(y + 1);
         }
 
