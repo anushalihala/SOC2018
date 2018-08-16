@@ -50,6 +50,11 @@ function printWorld(world) {
     return twoStr;
 }
 
+/**
+ * Returns an html string representation of a result array
+ * @param result -- 2D array containing continent name and land count
+ * @return String htmlStr -- result array as html string
+ */
 function printResult(result){
     var htmlStr="<p>";
     for(var i=0;i<result.length;i++){
