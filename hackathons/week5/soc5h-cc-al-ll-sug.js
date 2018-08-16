@@ -21,24 +21,42 @@ function randomWorldGenerator(n) {
 /**
  * Returns a string representation of a 2D array in tabular form
  * @param world -- 2D array containing 1s and 0s
- * @return string worldStr -- 2D array as a string (in tabular form)
+ * @return Array twoStr -- two element array; 2D array as a plain string (in tabular form) and html string
  */
 function printWorld(world) {
+    var htmlStr="<p>["
     var worldStr = '[';
     var n = world.length;
     for (var i = 0; i < n; i++) {
         worldStr += '[';
+        htmlStr += "[";
         for (var j = 0; j < n; j++) {
             if (j !== n - 1) {
-                worldStr += world[i][j] + ','
+                worldStr += world[i][j] + ',';
+                htmlStr += world[i][j] + ',';
             } else {
-                worldStr += world[i][j]
+                worldStr += world[i][j];
+                htmlStr += world[i][j];
             }
         }
         worldStr += ']';
+        htmlStr += ']<br>';
     }
     worldStr += ']';
-    return worldStr;
+    htmlStr =  htmlStr.slice(0,-4) + ']</p>';
+    var twoStr = [];
+    twoStr.push(worldStr);
+    twoStr.push(htmlStr);
+    return twoStr;
+}
+
+function printResult(result){
+    var htmlStr="<p>";
+    for(var i=0;i<result.length;i++){
+        htmlStr += result[i][0] + " = " + result[i][1] + "<br>";
+    }
+    htmlStr =  htmlStr.slice(0,-4) + '</p>';
+    return htmlStr
 }
 
 /**
@@ -170,7 +188,9 @@ function benchmarking(n) {
  */
 function main() {
     console.log('Finding areas in a model 11x11 world');
+    document.write("<p>Finding areas in a model 11x11 world</p>");
     console.log('World:\n');
+    document.write("<p>World: </p>");
     var myWorld =
         [[0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,1,0,0,0],
@@ -183,17 +203,26 @@ function main() {
         [1,1,0,0,0,0,0,1,1,1,0],
         [1,1,0,0,0,0,0,0,1,0,0],
         [0,0,0,0,0,0,0,0,0,0,0]];
-    console.log(printWorld(myWorld));
-    console.log("Continents counter:", continentsCounter(myWorld, NaN));
+    console.log(printWorld(myWorld)[0]);     
+    document.write(printWorld(myWorld)[1]);
+    var myWorldAns = continentsCounter(myWorld, NaN);
+    console.log("Continents counter:", myWorldAns);
+    document.write("<p>Continents counter: </p>" + printResult(myWorldAns));
     console.log();
 
     var size = parseInt(prompt('Enter size of new world'));
     console.log('Finding areas in a random ' + size.toString() + 'x' + size.toString() + ' world.');
+    document.write('<p>Finding areas in a random ' + size.toString() + 'x' + size.toString() + ' world.</p>');
     console.log('World:');
+    document.write("<p>World: </p>");
     var randomWorld = randomWorldGenerator(size);
-    console.log(randomWorld);
-    console.log("Continents counter:", continentsCounter(randomWorld, NaN));
+    console.log(printWorld(randomWorld)[0]);
+    document.write(printWorld(randomWorld)[1]);
+    var randomWorldAns = continentsCounter(randomWorld, NaN);
+    console.log("Continents counter:", randomWorldAns);
+    document.write("<p>Continents counter: </p>" + printResult(randomWorldAns));
     console.log();
 
     console.log('Average time taken to find areas =', benchmarking(11), 'seconds');
+    document.write('<p>Average time taken to find areas = ', benchmarking(11), ' seconds</P>');
 }
