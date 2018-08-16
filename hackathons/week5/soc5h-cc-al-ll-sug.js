@@ -13,7 +13,7 @@ function randomWorldGenerator(n) {
             // generate a random integer between 0 and 1 included
             column[j] = Math.floor(Math.random() * 2);
         }
-        randomBoard[i] = column[j];
+        randomBoard[i] = column;
     }
     return randomBoard;
 }
