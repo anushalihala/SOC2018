@@ -49,7 +49,7 @@ function main() {
     // create result object
     let result = {};
     result['score'] = boggleSolver.score;
-    result['words'] = sorted(wordList);
+    result['words'] = wordList.sort();
     console.log('\nResult object:', result);
 
     // benchmarking
