@@ -73,14 +73,18 @@ class Dictionary {
     loadDictionary() {
         let txtContent = "";
         // load content of dictionary file
-        let fileReader = new XMLHttpRequest();
-        fileReader.open("GET", this.dictFile, false);
-        fileReader.onreadystatechange = function () {
-            if (fileReader.readyState === 4 && fileReader.status === 200) {
-                txtContent = fileReader.responseText;
-            }
-        };
-        fileReader.send(null);
+        fetch(this.dictFile)
+            .then(response => response.text())
+            .then(text => txtContent = text);
+
+        // let fileReader = new XMLHttpRequest();
+        // fileReader.open("GET", this.dictFile, false);
+        // fileReader.onreadystatechange = function () {
+        //     if (fileReader.readyState === 4 && fileReader.status === 200) {
+        //         txtContent = fileReader.responseText;
+        //     }
+        // };
+        // fileReader.send(null);
 
         // add each word of the file to our trie dictionary
         let dictArray = txtContent.split("\n");

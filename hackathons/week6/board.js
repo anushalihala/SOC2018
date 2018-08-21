@@ -78,7 +78,11 @@ class Board {
      * The result is a 2 dimensional array/list containing randomly generated characters.
      */
     initBoard() {
+        // initialize this.board with empty strings beforehand
+        this.board = Array(this.size).fill(Array(this.size).fill(""));
+
         let distributionSize = this.distribution[0].length;
+
         for (let i = 0; i < this.size * this.size; i++) {
             let row = Math.floor(i / this.size);  // integer division
             let col = i % this.size;

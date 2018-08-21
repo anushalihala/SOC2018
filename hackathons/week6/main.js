@@ -30,7 +30,7 @@ function main() {
     };
 
     // create and initialize our board
-    let boggleBoard = Board(boardSize, distribution);
+    let boggleBoard = new Board(boardSize, distribution);
 
     // create and initialize our solver
     let boggleSolver = new Solver(boggleBoard, boggleDictionary);
@@ -71,8 +71,8 @@ function benchmarking(boardSize, distribution, boggleDictionary) {
 
     for (let i = 0; i < computationsCount; i++) {
         // initialize a board and its solver
-        let boggleBoard = Board(boardSize, distribution);
-        let boggleSolver = Solver(boggleBoard, boggleDictionary);
+        let boggleBoard = new Board(boardSize, distribution);
+        let boggleSolver = new Solver(boggleBoard, boggleDictionary);
 
         let algorithmRunCount = 10;
         let startTime = performance.now();
