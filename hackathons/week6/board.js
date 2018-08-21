@@ -79,7 +79,10 @@ class Board {
      */
     initBoard() {
         // initialize this.board with empty strings beforehand
-        this.board = Array(this.size).fill(Array(this.size).fill(""));
+        for (let x = 0; x < this.size; x++) {
+            let rowArray = Array(this.size).fill("");
+            this.board.push(rowArray);
+        }
 
         let distributionSize = this.distribution[0].length;
 
@@ -87,7 +90,7 @@ class Board {
             let row = Math.floor(i / this.size);  // integer division
             let col = i % this.size;
             let diceThrow = Math.floor(Math.random() * (distributionSize - 1));
-            this.board[row][col] = this.distribution[i][diceThrow]
+            this.board[row][col] = this.distribution[i][diceThrow];
         }
     }
 }

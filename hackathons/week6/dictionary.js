@@ -77,14 +77,9 @@ class Dictionary {
             .then(response => response.text())
             .then(text => txtContent = text);
 
-        // let fileReader = new XMLHttpRequest();
-        // fileReader.open("GET", this.dictFile, false);
-        // fileReader.onreadystatechange = function () {
-        //     if (fileReader.readyState === 4 && fileReader.status === 200) {
-        //         txtContent = fileReader.responseText;
-        //     }
-        // };
-        // fileReader.send(null);
+        // TODO - find a way to load content of dictionary text file
+        // TODO - that works with every major browser!
+        // TODO - The Fetch API does not work in Chrome with a file:/// protocole!
 
         // add each word of the file to our trie dictionary
         let dictArray = txtContent.split("\n");

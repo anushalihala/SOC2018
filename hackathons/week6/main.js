@@ -37,7 +37,11 @@ function main() {
 
     console.log('Boggle board after shuffle:');
     boggleBoard.distriBoard.forEach((element) => {
-       console.log(element);
+        let eleStr = "";
+        element.forEach((subelement) => {
+            eleStr += subelement + " ";
+        });
+        console.log(eleStr);
     });
 
     console.log('\nAll valid words found on the board:');
@@ -50,7 +54,8 @@ function main() {
     let result = {};
     result['score'] = boggleSolver.score;
     result['words'] = wordList.sort();
-    console.log('\nResult object:', result);
+    let resultAsString = JSON.stringify(result);
+    console.log('\nResult object:', resultAsString);
 
     // benchmarking
     console.log('\nAverage time taken to find words on a standard Boggle board is:');

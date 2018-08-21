@@ -41,11 +41,8 @@ class Solver {
      * @return: {Array} valid words on the board
      */
     findWords() {
-        let tilesInPrefix = {
-            'stack': [],
-            'set': new Set()
-        };
-
+        // variable initialization
+        let tilesInPrefix = new Map();
         let size = this.board.boardSize;
         let validWords = [];
 
@@ -57,8 +54,8 @@ class Solver {
             let prefix = this.board.distriBoard[row][col];
             // add tile to tiles in word
             let position = [row, col];
-            tilesInPrefix['set'] = new Set().add(position);
-            tilesInPrefix['stack'] = [position];
+            tilesInPrefix.set('set', new Set().add(position));
+            tilesInPrefix.set('stack', [position]);
 
             // if the prefix exists in our dictionary, find its corresponding words
             if (this.dictionary.isPrefix(prefix)) {
