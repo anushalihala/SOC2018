@@ -10,7 +10,6 @@ class Dictionary {
         this.dictFile = dictFile;
         this.rootNode = new TrieNode("");
         this.searchMap = new Map();
-        this.loadDictionary();
     }
 
     /**
@@ -23,8 +22,8 @@ class Dictionary {
         if (exists) {
             exists = false;
             let textNode = this.searchMap.get("endNode");
-            if (textNode != null) {
-                exists = textNode.endsWord;
+            if (textNode !== undefined && textNode !== null) {
+                exists = textNode.getEndsWorld();
             }
         }
         return exists;
@@ -36,7 +35,7 @@ class Dictionary {
      * @return {boolean} true if the string is a prefix of a word in our dictionary, and false otherwise
      */
     isPrefix(text) {
-        if (! text) {
+        if (text === undefined || text.empty) {
             return false;
         }
         // start exploring the trie from the root
@@ -48,7 +47,7 @@ class Dictionary {
             // for each character in our text, determine if exists corresponding node
             let char = upperText.charAt(i);
             let charNode = current.getChild(char);
-            if (! charNode) {
+            if (charNode === undefined || charNode === null) {
                 // if no node is found, then the input text is not in our dictionary
                 exists = false;
                 return exists;
@@ -70,21 +69,22 @@ class Dictionary {
      * Load a dictionary text file into our dictionary.
      * This dictionary is implemented as a trie.
      */
-    loadDictionary() {
-        let txtContent = "";
-        // load content of dictionary file
-        fetch(this.dictFile)
-            .then(response => response.text())
-            .then(text => txtContent = text);
-
+    async loadDictionary() {
         // TODO - find a way to load content of dictionary text file
         // TODO - that works with every major browser!
         // TODO - The Fetch API does not work in Chrome with a file:/// protocole!
 
+        // load content of dictionary file
+        let txtContent = "";
+        let response =
+            await fetch(this.dictFile)
+                    .then(response => response.text())
+                    .then(text => txtContent = text);
+
         // add each word of the file to our trie dictionary
         let dictArray = txtContent.split("\n");
         for (let i = 0; i < dictArray.length; i++) {
-            let word = dictArray[0];
+            let word = dictArray[i];
             if (word !== null) {
                 word = word.trim();
                 this.addWord(word);
@@ -111,14 +111,14 @@ class Dictionary {
             let char = word.charAt(i);
             let childNode = current.getChild(char);
             // a character is added ONLY if it doesn't exist already
-            if (childNode == null) {
+            if (childNode === null || childNode === undefined) {
                 childNode = current.doInsert(char);
             }
-            childNode = current;
+            current = childNode;
         }
 
         // at this point, all the characters of the word have been added to dictionary
-        current.endsWorld = true;
+        current.setEndsWorld(true);
         return true;
     }
 }

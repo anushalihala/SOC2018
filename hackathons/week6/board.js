@@ -70,7 +70,7 @@ class Board {
         if (neighbours.indexOf(position) > -1) {
             neighbours.splice(ndx, 1);
         }
-        return neighbours
+        return neighbours;
     }
 
     /**

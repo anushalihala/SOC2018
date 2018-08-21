@@ -59,7 +59,7 @@ class Solver {
 
             // if the prefix exists in our dictionary, find its corresponding words
             if (this.dictionary.isPrefix(prefix)) {
-                validWords.push(this.findNextWords(position, prefix, tilesInPrefix));
+                validWords = validWords.concat(this.findNextWords(position, prefix, tilesInPrefix));
             }
         }
         return validWords;
@@ -76,8 +76,12 @@ class Solver {
 
         let words = [];
         let neighbours = this.board.getNeighbours(position);
+
         for (let i = 0; i < neighbours.length; i++) {
-            let ndx = tilesInPrefix['set'].indexOf();
+            let pos = neighbours[i];
+            let temp = Array.from(tilesInPrefix.get('set'));
+            let ndx = temp.indexOf(pos);
+
             if (ndx < 0) {
                 let x = position[0];
                 let y = position[1];
@@ -91,12 +95,15 @@ class Solver {
 
                 // is this word a prefix in the dictionary?
                 if (this.dictionary.isPrefix(word)) {
-                    tilesInPrefix['stack'].push(position);
-                    tilesInPrefix['set'].add(position);
-                    words.push(this.findNextWords(position, word, tilesInPrefix));
+                    tilesInPrefix.get('stack').push(pos);
+                    tilesInPrefix.get('set').add(pos);
 
-                    let visitedPosition = tilesInPrefix['stack'].pop();
-                    tilesInPrefix['set'].delete(visitedPosition);
+                    words = words.concat(
+                        this.findNextWords(pos, word, tilesInPrefix)
+                    );
+
+                    let visitedPosition = tilesInPrefix.get('stack').pop();
+                    tilesInPrefix.get('set').delete(visitedPosition);
                 }
             }
         }

@@ -5,9 +5,6 @@
  * @return {Object} Boggle game result
  */
 function main() {
-    let dictFileName = "dictionary.txt";
-    let boggleDictionary = new Dictionary(dictFileName);
-
     // initialize a standard 4x4 Boggle board
     let boardSize = 4;
     let distribution = {
@@ -32,35 +29,46 @@ function main() {
     // create and initialize our board
     let boggleBoard = new Board(boardSize, distribution);
 
-    // create and initialize our solver
-    let boggleSolver = new Solver(boggleBoard, boggleDictionary);
+    let dictFileName = "dictionary.txt";
+    let boggleDictionary = new Dictionary(dictFileName);
 
-    console.log('Boggle board after shuffle:');
-    boggleBoard.distriBoard.forEach((element) => {
-        let eleStr = "";
-        element.forEach((subelement) => {
-            eleStr += subelement + " ";
-        });
-        console.log(eleStr);
+    // wait for the dictionary file to be loaded into memory:
+    boggleDictionary.loadDictionary()
+        .then((response) => {
+
+            // create and initialize our solver
+            let boggleSolver = new Solver(boggleBoard, boggleDictionary);
+
+            console.log('Boggle board after shuffle:');
+            boggleBoard.distriBoard.forEach((element) => {
+                let eleStr = "";
+                element.forEach((subelement) => {
+                    eleStr += subelement + " ";
+                });
+                console.log(eleStr);
+            });
+
+            console.log('\nAll valid words found on the board:');
+            let wordList = boggleSolver.validWords;
+            wordList.forEach((word) => {
+                console.log(word);
+            });
+
+            // create result object
+            let result = {};
+            result['score'] = boggleSolver.score;
+            result['words'] = wordList.sort();
+            let resultAsString = JSON.stringify(result);
+            console.log('\nResult object:', resultAsString);
+
+            // benchmarking
+            console.log('\nAverage time taken to find words on a standard Boggle board is:');
+            console.log(benchmarking(boardSize, distribution, boggleDictionary), 'seconds');
+
+        })
+        .catch((error) => {
+            console.error(JSON.stringify(error));
     });
-
-    console.log('\nAll valid words found on the board:');
-    let wordList = boggleSolver.validWords;
-    wordList.forEach((word) => {
-        console.log(word);
-    });
-
-    // create result object
-    let result = {};
-    result['score'] = boggleSolver.score;
-    result['words'] = wordList.sort();
-    let resultAsString = JSON.stringify(result);
-    console.log('\nResult object:', resultAsString);
-
-    // benchmarking
-    console.log('\nAverage time taken to find words on a standard Boggle board is:');
-    console.log(benchmarking(boardSize, distribution, boggleDictionary), 'seconds');
-    return result;
 }
 
 /**

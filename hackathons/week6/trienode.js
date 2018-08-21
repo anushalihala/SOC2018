@@ -15,7 +15,7 @@ class TrieNode {
      * Does this node end a word
      * @return {boolean|*} true if this node ends a word, false otherwise
      */
-    get endsWorld() {
+    getEndsWorld() {
         return this.endsWord;
     }
 
@@ -23,7 +23,7 @@ class TrieNode {
      * Set whether or not this node ends a word in a trie
      * @param worldEnd: value determining whether this node ends a word
      */
-    set endsWorld(worldEnd) {
+    setEndsWorld(worldEnd) {
         this.endsWord = worldEnd;
     }
 
@@ -32,10 +32,12 @@ class TrieNode {
      * @param character: the trie node the given character links to, or null if that link is not in trie
      */
     getChild(character) {
-        if (character in this.childNodes.keys()) {
+        if (this.childNodes.get(character) === null
+            || this.childNodes.get(character) === undefined) {
+            return null;
+        } else {
             return this.childNodes.get(character);
         }
-        return null;
     }
 
     /**
@@ -44,11 +46,13 @@ class TrieNode {
      * @return TrieNode: newly created trie node, or null if the character is already in the trie
      */
     doInsert(character) {
-        if (character in this.childNodes.keys()) {
+        if (this.childNodes.get(character) === null
+                || this.childNodes.get(character) === undefined) {
+            let nextNode = new TrieNode(this.text + character);
+            this.childNodes.set(character, nextNode);
+            return this.childNodes.get(character);
+        } else {
             return null;
         }
-        let nextNode = new TrieNode(this.text + character);
-        this.childNodes.set(character, nextNode);
-        return nextNode;
     }
 }
