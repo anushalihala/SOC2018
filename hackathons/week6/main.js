@@ -39,18 +39,24 @@ function main() {
             // create and initialize our solver
             let boggleSolver = new Solver(boggleBoard, boggleDictionary);
 
+            let htmlStr = "\nBoggle board after shuffle:\n";
+
             console.log('Boggle board after shuffle:');
             boggleBoard.distriBoard.forEach((element) => {
                 let eleStr = "";
                 element.forEach((subelement) => {
                     eleStr += subelement + " ";
                 });
+                htmlStr += eleStr + "\n";
                 console.log(eleStr);
             });
+
+            htmlStr += "\nAll valid words found on the board:\n";
 
             console.log('\nAll valid words found on the board:');
             let wordList = boggleSolver.validWords;
             wordList.forEach((word) => {
+                htmlStr += word + "\n";
                 console.log(word);
             });
 
@@ -59,11 +65,22 @@ function main() {
             result['score'] = boggleSolver.score;
             result['words'] = wordList.sort();
             let resultAsString = JSON.stringify(result);
+
+            htmlStr += "\nResult object:\n";
+            htmlStr += resultAsString + "\n";
+
             console.log('\nResult object:', resultAsString);
 
             // benchmarking
+            let averageTime = benchmarking(boardSize, distribution, boggleDictionary);
+            htmlStr += "\nAverage time taken to find words on a standard Boggle board is:\n";
+            htmlStr += averageTime + " seconds";
+
             console.log('\nAverage time taken to find words on a standard Boggle board is:');
-            console.log(benchmarking(boardSize, distribution, boggleDictionary), 'seconds');
+            console.log(averageTime, 'seconds');
+
+            // display results in HTML page
+            document.getElementById("results").innerText = htmlStr;
 
         })
         .catch((error) => {
