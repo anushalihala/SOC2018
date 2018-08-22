@@ -79,7 +79,7 @@ class Solver {
 
         for (let i = 0; i < neighbours.length; i++) {
             let pos = neighbours[i];
-            let exists = this.isPosiionInSet(pos, tilesInPrefix.get('set'));
+            let exists = this.isPositionInSet(pos, tilesInPrefix.get('set'));
 
             if (! exists) {
                 let x = pos[0];
@@ -115,7 +115,7 @@ class Solver {
      * @param set: input set
      * @return {Boolean} true if an equivalent element has been found, false otherwise
      */
-    isPosiionInSet(position, set) {
+    isPositionInSet(position, set) {
         let exists = false;
         for (let element of set) {
             if (element[0] === position[0] && element[1] === position[1]) {
