@@ -44,9 +44,10 @@ class Solver {
         // variable initialization
         let tilesInPrefix = new Map();
         let size = this.board.boardSize;
+        let numOfTiles = size*size; //Assumption: a square board is used
         let validWords = [];
 
-        for (let i = 0; i < this.board.boardSize; i++) {
+        for (let i = 0; i < numOfTiles; i++) {
             let row = Math.floor(i / size); // integer division
             let col = i % size;
 
