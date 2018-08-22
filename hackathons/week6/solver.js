@@ -83,8 +83,8 @@ class Solver {
             let ndx = temp.indexOf(pos);
 
             if (ndx < 0) {
-                let x = position[0];
-                let y = position[1];
+                let x = pos[0];
+                let y = pos[1];
                 let currentLetter = this.board.distriBoard[x][y];
                 let word = prefix + currentLetter;
 
