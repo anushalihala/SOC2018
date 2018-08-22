@@ -79,10 +79,9 @@ class Solver {
 
         for (let i = 0; i < neighbours.length; i++) {
             let pos = neighbours[i];
-            let temp = Array.from(tilesInPrefix.get('set'));
-            let ndx = temp.indexOf(pos);
+            let exists = this.isPosiionInSet(pos, tilesInPrefix.get('set'));
 
-            if (ndx < 0) {
+            if (! exists) {
                 let x = pos[0];
                 let y = pos[1];
                 let currentLetter = this.board.distriBoard[x][y];
@@ -108,5 +107,22 @@ class Solver {
             }
         }
         return words;
+    }
+
+    /**
+     * Determine if a set contains an equivalent element to another input array
+     * @param position: input array
+     * @param set: input set
+     * @return {Boolean} true if an equivalent element has been found, false otherwise
+     */
+    isPosiionInSet(position, set) {
+        let exists = false;
+        for (let element of set) {
+            if (element[0] === position[0] && element[1] === position[1]) {
+                exists = true;
+                break;
+            }
+        }
+        return exists;
     }
 }
