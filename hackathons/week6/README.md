@@ -33,7 +33,17 @@ This submission contains the following files:
 **To run the program:**
 - Download and unzip the `soc6h-bs-al-ll-sug.zip` file.
 - From a command line window, navigate to the (newly unzipped) `soc6h-bs-al-ll-sug` folder.
-- Launch the application by opening the `boggle_solver.html` file in a web browser.
+- Launch the application by opening the `boggle_solver.html` file in **Firefox**.
+
+**Note**:
+
+> Due to **security reasons**, Chrome, by default, does not allow for local files to be loaded and read in Javascript.
+Therefore, loading our dictionary from a local text file won't work in Chrome. 
+Which is why, we recommend running the Boggle solver in Firefox.
+
+> There's, however, an option to disable the security configuration in Chrome. 
+[Here][9] is an article that explains how it can be done on a Windows or a Linux machine.
+
 
 
 [1]: https://github.com/1millionwomentotech/toolkitten/tree/master/summer-of-code
@@ -44,3 +54,4 @@ This submission contains the following files:
 [6]: https://github.com/SolangeUG
 [7]: https://www.w3.org/TR/html52/
 [8]: https://raw.githubusercontent.com/jonbcard/scrabble-bot/master/src/dictionary.txt
+[9]: https://chrome-allow-file-access-from-file.blogspot.com/
