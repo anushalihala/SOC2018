@@ -24,7 +24,7 @@
 This submission contains the following files:
 - `boggle_solver.html`: HTML file to display results of the Boggle solver challenge
 - `main.js`: program entry point to get the boggle solver started
-- `solver.pj`: script that implements a boggle game solver
+- `solver.js`: script that implements a boggle game solver
 - `board.js`: script that randomly generates a boggle board
 - `dictionary.js`: script to implement the boggle dictionary using a trie
 - `trienode.js`: a javascript class that represents a trie node
