@@ -2,7 +2,7 @@
 
 [![NodeJS Runtime](https://img.shields.io/badge/JavaScript%20Runtime-NodeJS-43853D.svg)][1]
 [![ExpressJS Framework](https://img.shields.io/badge/Framework-ExpressJS-85929E.svg)][2]
-[![Pug Template Engine](https://img.shields.io/badge/Template%20Engine-Pug-A86454.svg)][3]
+[![Pug Template Engine](https://img.shields.io/badge/Template%20Engine-PugJS-A86454.svg)][3]
 
 
 ### Context
