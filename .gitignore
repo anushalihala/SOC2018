@@ -8,6 +8,5 @@ __pycache__/
 # NodeJS modules
 node_modules
 
-# NodeJS log (or profile text) files
+# NodeJS log (or application profiling) files
 *.log
-*.txt
