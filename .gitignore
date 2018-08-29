@@ -4,3 +4,10 @@
 
 # Ignore Python 3 bytecode
 __pycache__/
+
+# NodeJS modules
+node_modules
+
+# NodeJS log (or profile text) files
+*.log
+*.txt
