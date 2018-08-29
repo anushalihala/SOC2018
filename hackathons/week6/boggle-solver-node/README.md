@@ -53,6 +53,7 @@ This NodeJS version of the Boggle solver contains the following folders and file
 - Run the `npm install` command, then start the NodeJS server with the `npm start` command.
 - The application will be available at the `http:localhost:8484` address.
 - To display benchmark results, go to `http:localhost:8484/benchmark` in your favorite web browser.
+- To stop the application, press <kbd>CTRL</kbd>+<kbd>C</kbd> in the command line window.
 
 
 [1]: https://nodejs.org/en/
