@@ -21,6 +21,8 @@
 
 This NodeJS version of the Boggle solver contains the following folders and files:
 
+- the **`server.js` file** contains our NodeJS server application definition
+
 - the **`images` folder** contains the application `favicon` image
 
 - the **`views` folder** contains template files and their `HTML` compiled versions:
