@@ -1,0 +1,11 @@
+{
+  "name": "boggle-solver-node",
+  "version": "1.0.0",
+  "description": "A Boggle game solver in NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@SolangeUG",
+  "license": "ISC"
+}
