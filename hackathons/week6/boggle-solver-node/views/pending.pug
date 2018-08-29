@@ -1,0 +1,34 @@
+doctype html
+html(lang='en')
+    head
+        title= title
+        meta(charset='utf-8')
+
+        // This is to be able to display the loading progress bar, then redirect to benchmark results after 1 sec delay
+        meta(http-equiv="refresh" content="1;url=http://localhost:8484/benchmark/results")
+
+        // Use Bootstrap 4.0.0
+        script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
+
+        // Use Materialize progress bar
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js')
+        link(rel='stylesheet',
+        href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css')
+    body
+        .container
+            section
+                p
+                    h3= title
+
+            div
+                section
+                    p.text-primary Average running time (over 1000 iterations):
+
+                    div
+                        section.mx-auto
+                            p
+                                div.progress
+                                    section.indeterminate

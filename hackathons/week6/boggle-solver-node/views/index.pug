@@ -1,0 +1,34 @@
+doctype html
+html(lang='en')
+    head
+        title= title
+        meta(charset='utf-8')
+
+        // Use Bootstrap 4.0.0
+        script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+        script(src='src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
+    body
+        .container
+            section
+                p
+                    h3= title
+
+            div
+                section
+                    p
+                        p.text-primary Boggle board after shuffle:
+                            p !{board}
+
+                section
+                    .row
+                        .col-md-12
+                            p.text-primary All valid words found on the board:
+                                p= words
+
+                section
+                    .row
+                        .col-md-12
+                            p.text-primary Result object:
+                                p !{result}
