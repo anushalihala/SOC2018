@@ -1,8 +1,8 @@
 ## Boggle Solver Challenge - NodeJS Version
 
 [![NodeJS Runtime](https://img.shields.io/badge/JavaScript%20Runtime-NodeJS-43853D.svg)][1]
-[![ExpressJS Framework](https://img.shields.io/badge/Framework-ExpressJS-EEEEEE.svg)][2]
-[![Pug Template Engine](https://img.shields.io/badge/Template%20Engine-pug-A86454.svg)][3]
+[![ExpressJS Framework](https://img.shields.io/badge/Framework-ExpressJS-85929E.svg)][2]
+[![Pug Template Engine](https://img.shields.io/badge/Template%20Engine-Pug-A86454.svg)][3]
 
 
 ### Context
@@ -14,25 +14,25 @@
 
 - [NodeJS][1]
 - [ExpressJS][2]
-- [Pug][3]
+- [PugJS][3]
 - [Boggle dictionary][5]
 
 ### Content
 
-This NodeJS version of the Boggle solver contains the following files:
+This NodeJS version of the Boggle solver contains the following folders and files:
 
-- the `images` folder contains the application `favicon` icon
+- the **`images` folder** contains the application `favicon` image
 
-- the `views` folder contains template files and their `HTML` compiled versions:
+- the **`views` folder** contains template files and their `HTML` compiled versions:
     - `index.pug`: the index (default) application template
     - `pending.pug`: a temporary page displayed while benchmarking the application
     - `benchmark.pug`: a template to display the application benchmark results
 
-- the `routes` folder contains:
+- the **`routes` folder** contains:
     - `index.js`: module that handles default `GET` requests to the server
-    - `benchmark.js`: module that handles `GET` requests to the benchmark *resources*
+    - `benchmark.js`: module that handles `GET` requests to the *benchmark resources*
 
-- in the `solver` folder:
+- in the **`solver` folder**:
     - `Main.js`: the main application class to get the boggle solver started
     - `Solver.js`: class that implements a boggle game solver
     - `Board.js`: class that randomly generates a boggle board
