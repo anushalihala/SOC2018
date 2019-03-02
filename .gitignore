@@ -7,3 +7,10 @@ __pycache__/
 hackathons/week4/.ipynb_checkpoints/soc4h-rnn-al-sug-checkpoint.ipynb
 hackathons/week4/Baby_5.json
 hackathons/week4/glove.6B.50d.txt
+
+
+# NodeJS modules
+node_modules
+
+# NodeJS log (or application profiling) files
+*.log
